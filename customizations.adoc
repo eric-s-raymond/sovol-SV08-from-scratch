@@ -1,4 +1,4 @@
-= Tuning and Customizatuions
+= Tuning and Customizations
 
 If you found this before the link:setup.adoc[Sovol08 Build and Setup Guide],
 you should probably read that first.
@@ -7,16 +7,17 @@ This is a guide to tuning and improving your Sovol08
 after it has passed initial acceptance tests.
 
 Each mod here is intended to be small, self-contained, and
-self-explanatory. If you don't undetstnd what it's doing, file an
+self-explanatory. If you don't understand what it's doing, file an
 issue against this repository.
 
 == Temperature-controlled fan
 
 Early videos on the SV08 were full of complaints about the mainboard
 fan being extremely loud. This is no longer a problem on 08s
-manufactured in 2025, but it's still a good idea to extend the fan's
-lifetime by applying John Hansknecht's CPU fan control mod after
-printer.cfg:375 below the fan3 control code:
+manufactured in 2025, but it's still a good idea to quiet your printer
+and extend the fan's lifetime by applying John Hansknecht's CPU fan
+control mod. A good place for this is after the fan3 control code,
+about printer.cfg:375 in a stock installation:
 
 // batchspell: off
 ----

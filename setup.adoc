@@ -301,6 +301,10 @@ If you continue to have issues with first-layer quality, see
 https://wiki.sovol3d.com/en/How-to-Enhance-SV08-First-Layer-Printing[How
 to Enhance SV08 First Layer Printing] on the Sovol wiki.
 
+== What To Read Next
+
+link:customizations.adoc[Tuning and Customizations]
+
 == References
 
 https://github.com/Wrath669/SV08BedTension[SV08 BedTension]::
