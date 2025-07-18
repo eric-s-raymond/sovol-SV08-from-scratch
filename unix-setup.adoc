@@ -7,7 +7,7 @@
 // batchspell: add tmc toolhead zeroconf 
 = Unix setup instructions for the Sovol 08
 
-If you found this before the link:setup.adoc[Sovol08 Buiold and Setup Guide],
+If you found this before the link:setup.adoc[Sovol08 Build and Setup Guide],
 you should probably read that first.
 
 The Sovol 08 includes two embedded computers on a single

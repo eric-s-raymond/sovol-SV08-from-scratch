@@ -4,7 +4,7 @@
 // batchspell: add gcode gerGo's heatsinks heightmap http io
 // batchspell: add linux mainboard mcu microcontroller misconfiguration
 // batchspell: add re-tensioning sensorless sgthrs sovol
-// batchspell: add tmc toolhead ZOFFSET
+// batchspell: add tmc toolhead unix ZOFFSET
 = Sovol08 Build and Setup Guide
 
 This is intended to be a self-contained and reasonably complete
@@ -58,8 +58,8 @@ Things you should have handy:
   https://www.youtube.com/watch?v=PmB53XONPdQ
 
 . Note that the two compression collars for the ends of the PTFE tube
-  (mated pieces of blue and black plastic) have a tendency to fly off
-  - keep careful track of them.
+  (mated pieces of blue and black plastic) have a tendency to fly off;
+  keep careful track of them.
 
 . Despite the toolhead fan connector being glued in, ours fell out
   during assembly. If this happens to you, be sure you re-plug it into
@@ -206,7 +206,7 @@ calibration. This process is documented - not very well - on pages
 20 and 21 of the user manual.
 
 There are some traps for the unwary here. The biggest one is that,
-though Sovol's Z-ofsset calibration silently saves whatever value
+though Sovol's Z-offset calibration silently saves whatever value
 you've adjusted it to at the end of the run (in my case it started at
 2.038 and saved 1.931) every time you recalibrate it presents you with
 an displayed offset of 0.00. Whatever adjustment you make is silently
@@ -263,17 +263,17 @@ Here's an actually correct way to set your Z offset:
    filament you want to print with. 60C is a good start for PLA if
    your filament manufacturer doesn't specify.
 
-2. Wait a few minutes for the bed and inductive probe to
+3. Wait a few minutes for the bed and inductive probe to
    heat-soak. Three minutes is about right for 60C, higher
    temperatures should go longer.
 
-3. Heat the nozzle to 150C and wait 60 seconds or so.  The goal is to
+4. Heat the nozzle to 150C and wait 60 seconds or so.  The goal is to
    make any goop on the nozzle tip soft enough to be removed by the
    nozzle wiper.
 
-4. Print first-layer test as described in the Sovol user manual.
+5. Print first-layer test as described in the Sovol user manual.
 
-7. Live adjust Z as it prints.
+6. Live adjust Z as it prints.
 
 Z-offset is now dialed in, and will persist through reboots. You can
 look at the printer.cfg file to see the actual value.
