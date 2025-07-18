@@ -1,0 +1,116 @@
+// batchspell: add DHCP DNS EMI EMMC Klipper
+// batchspell: add Octo OrcaSlicer PETG PLA Pre-assembly
+// batchspell: add PTFE QGL SBC SBCs SV SPI-XI Sovol Sovol's benchy config
+// batchspell: add flatpak gcode gerGo's heatsinks heightmap hostname http io
+// batchspell: add mainboard mcu mDNS microcontroller 
+// batchspell: add passwordless scp sensorless sovol
+// batchspell: add tmc toolhead zeroconf 
+= Unix setup instructions for the Sovol 08
+
+If you found this before the link:setup.adoc[Sovol08 Buiold and Setup Guide],
+you should probably read that first.
+
+The Sovol 08 includes two embedded computers on a single
+mainboard. One is the microcontroller that runs the stepper motors,
+interpreting G-code.  The other is a SOC that runs a somewhat
+stripped-down version of Debian Linux supporting Klipper. This is what
+you'll get to when you ssh to the printer.
+
+== OrcaSlicer setup
+
+. Download the flatpak OrcaSlicer nightly build from https://orca-slicer.com/#downloadnightly
+
+. Install it with flatpak install.
+
+. Set up a launch script that does "flatpak run io.github.softfever.OrcaSlicer".
+
+. Run the Setup Wizard. Under "Printer", use the Search keyword
+  to get to Sovol printers. Select Sovol 08 with your nozzle size -
+  the printer ships with an 0.4 nozzle. These are Sovol's official
+  profiles, so you won't need to download those from the Sovol wiki.
+
+. Also set your filament profile in the Wizard. If your brand
+  doesn't show up as an option, there are Generic profiles for
+  plastics such as PLA.
+
+Profile files for your OrcaSlicer installation live at
+~/.var/app/io.github.softfever.OrcaSlicer/config/OrcaSlicer/ and this
+is where you will install new ones if you need to do that by hand.
+
+If you are running OrcaSlicer under i3 or some other window manager
+that doesn't provide dismiss buttons, Mod-Shift-Q is your friend
+for disposing of modal windows like Preferences.
+
+== Find the dynamic-DNS name of your printer
+
+Zero configuration is the best configuration...
+
+. Power up the printer, plug in an Ethernet cable, and give it a few
+  seconds to get an address from your DHCP service and broadcast its
+  mDNS name.
+
+. Try pinging SPI-XI.local from any of your machines. Yes, with the
+  capital letters! If that works (and it should on factory 2.4.6
+  firmware), you can skip the rest of the steps in this
+  section. Otherwise:
+
+. Find the IP under Advanced->Show IP via the screen interface.
+
+. Log in to it using ssh: user sovol, password sovol.  You should see
+  a normal-looking Linux shell session (it's running Debian on the
+  mainboard SOC).
+
+. Dig the printer's hostname out of /etc/hostname.
+
+. Try pinging that name with ".local" appended from one of your Linux
+  boxes. This should work; if it replies, you won't have to set up a
+  static lease on your router or worry about what the printer's IP
+  address is - just tell your software the .local name.
+
+. Verify that we can see Mainsail by pointing a browser at the
+  printer's name.
+
+This finishes establishing network and web connection with the
+printer.
+
+You can change the printer's DNS name by editing /etc/hostname.
+Whatever you put there will become a zeroconf name ending in ".local".
+
+== Software configuration
+
+. Before making any config changes or installing keys, it's good to
+  back up the printer's EMMC image by running this command at the
+  printer's shell prompt (replacing the ssh credentials).
++
+// batchspell: off
+----
+dd if=/dev/mmcblk2 bs=10M conv=fsync status=progress |gzip -c -9 | ssh user@<dest-server> 'gzip -d | dd of=/backups/backup.img bs=10M
+----
+// batchspell: on
++
+It's going to take a while, so be patient.
+
+. Install ssh keys from the machine you'll be using as a
+  control station for passwordless secure login.
+
+Note: As a Unix person, you will probably be thinking about Git
+repositories and scp as a way of managing your printer configuration.
+You can do this - the Debian system inside it even hosts vi.  Think
+twice, though. Mainsail has its own protocols for modifying and
+backing up printer.cfg and the last thing you need is for those
+two methods to fight each other.
+
+== Finishing OrcaSlicer setup
+
+. Point OrcaSlicer at the printer by IP address - unfortunately, as of
+  2.3.0 there is a bug that OrcaSlicer fails to resolve mDNS
+  names. The easiest way to do this is by going to the Prepare menu
+  and clicking the network icon off to the right of your Sovol printer
+  entry. Expect the "Physical Printer" dialog; be sure the Host Type
+  field is "Octo/Klipper", and do not omit the "http://" prefix
+  before the IP address.
+
+. Check that the OrcaSlicer start and end macros call the Sovol
+  START_PRINT and END_PRINT macros.
+
+// end

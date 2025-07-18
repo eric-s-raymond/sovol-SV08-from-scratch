@@ -1,0 +1,22 @@
+= Sovol08 From Scratch
+
+This repository contains guides intended to get
+a technically inclined person from a cold start
+to a fully working and tuned Sovol08 3D printer.
+
+It's based on the experiences I had setting mine up.
+Unlike some other guides, the governing philosphy
+is to stay as close as possible to a stock Sovol
+installation and make small, incremental changes
+that are easy to understand and combine with
+modifications by people who aren't me.
+
+* link:setup.adoc[Build and setup guide]
+
+* link:unix-setup.adoc[Tips and help for Linux and *BSD users]
+
+Much of the material in the set-up guide is generic to all Klipper
+printers, but not all of it.
+
+If you find this work useful, please
+https://www.patreon.com/esr[support me on Patreon.]

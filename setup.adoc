@@ -1,0 +1,309 @@
+// batchspell: add Awabom BedTension DHCP DNS EMI EMMC Hansknecht's Heightmap Klipper
+// batchspell: add Loctite Octo OrcaSlicer PETG PLA Pre-assembly
+// batchspell: add PTFE QGL SBCs SV Sovol Sovol's benchy config
+// batchspell: add gcode gerGo's heatsinks heightmap http io
+// batchspell: add linux mainboard mcu microcontroller misconfiguration
+// batchspell: add re-tensioning sensorless sgthrs sovol
+// batchspell: add tmc toolhead ZOFFSET
+= Sovol08 Build and Setup Guide
+
+This is intended to be a self-contained and reasonably complete
+guide to building, interfacing, configuring, and tuning the
+Sovol 08 3D printer
+
+These steps pertain to a Sovol 08 purchased in July 2025, with the
+firmware version shipping at that time, 2.4.6, Mainsail 2.10.0, and
+V1.0 of the user manual.
+
+Sovol claims installation will take an hour. This is laughably
+optimistic. To do it slowly, carefully, and right, budget 5 hours.
+
+If you are running Linux or *BSD, there is a companion document that
+describes link:unix-setup.adoc[specifics for those].
+
+== Prerequisites
+
+Things you should have handy:
+
+* A roll of electrical tape.
+
+* A set of small self-adhesive heatsinks. The sort sold for
+  Raspberry Pis and similar SBCs will do nicely.
+
+* A bottle of red Loctite.
+
+* Optional: A clamp-on ferrite choke sized for a USB cable.
+
+== Pre-assembly steps
+
+. Take the metal shield off the printer base before assembly. Ground
+  yourself before touching the mainboard. Locate the two largest chips
+  on the mainboard and put heatsinks on them. This will extend the
+  lifetime of your printer and may prevent flaky "mcu_extra timing"
+  errors during long prints.
+
+. Check for wire bundles that might rub against the shield edge. Some
+  - perhaps even all - will have adjacent edges of the shields covered
+  with plastic guards to prevent abrasion. Wrap any bundles that don't
+  in electrical tape.
+
+. Check for loose fasteners in the toolhead. Loctite them.
+  Note: use red Loctite only - you'll regret it if you use the
+  stronger stuff.
+
+== Assembly
+
+. Perform assembly as described in pages 05-14 of the
+  User's Manual. See Sovol's video on unboxing and assembly at
+  https://www.youtube.com/watch?v=PmB53XONPdQ
+
+. Note that the two compression collars for the ends of the PTFE tube
+  (mated pieces of blue and black plastic) have a tendency to fly off
+  - keep careful track of them.
+
+. Despite the toolhead fan connector being glued in, ours fell out
+  during assembly. If this happens to you, be sure you re-plug it into
+  the vertically-oriented header labeled "Fan 4" near the bottom of
+  the toolhead, not the horizontally-oriented one one labeled "Fan 3"
+  at the top. If you get this wrong, you won't get any part cooling
+  and performance will suffer.
+
+. If you weren't reading the assembly instructions carefully, one of
+  the less well-explained warnings (page 10) is not to let the
+  mainboard-to-toolhead cable bundle develop a twist while installing
+  the toolhead on the gantry. If required, rotate the toolhead to fix
+  this. This will avoid undue stress on the cable.
+
+. Another slightly tricky detail is the plastic bracket secured
+  by an M4x20 that carried the umbilical cable to the toolhead.
+  it's just possible to put that on upside down, in which case
+  you'll lose the cable slack you ought to have for the individual
+  cables coming out of the bottom.
+
+. A clamp-on ferrite choke can prevent EMI from inducing noise in the
+  toolhead cable - this noise can cause mystery timing errors as
+  communication between the two is degraded. If you have a choke,
+  attach it - low down, where the toolhead cable meets the base, so
+  the drag on the cable is minimized. Do this just before clipping the
+  PTFE tube to the toolhead cable.
+
+. The magnets holding on the print-head cover aren't very strong.
+  It can get bumped off by upward-projecting parts of a model,
+  ruining your print and possibly tearing the cooling-fan wires.
+  Zip-tie that thing on, or for a more elegant solution use gerGo's
+  PETG clip mod:
+  https://cults3d.com/en/3d-model/tool/sovol-sv08-macro-additions
+
+You should now have a fully assembled and wired printer.
+
+== Notes on the installation manual
+
+Temperature display on the screen is in Centigrade.
+
+What's mislabeled "Printing Progress Time" on page 16
+is actually expected time to completion.
+
+== Test for and fix current-sensor misconfiguration
+
+After assembly, the next step the Sovol manual advises you to take is
+to perform an "Auto Z Calibrate".  However, there is an occasional
+problem with these printers as shipped that you need to check for
+first: misconfiguration of the stepper current sensors.
+
+Auto-home the printer from the display screen. If you are lucky, you
+will succeed and can skip the rest of this section.  (But if you have
+persistent layer shifts when printing you may need to revisit it.)
+
+If you are unlucky, auto-home may fail in one of two ways: either the print
+head will stop moving before it should, failing to home, or it might
+hit its motion limit with a loud knocking noise. This can happen on
+one or both axes, so there are actually four possible failure modes.
+Any of the four can prevent "Auto Z Calibrate" from working, stopping
+your acceptance testing.
+
+This problem was reported in gerGo's setup video:
+https://www.youtube.com/watch?v=xt6uzXgRJdc&list=PL36BnrhYaGnLgOlfz_Jw0z_YXlw8OexdO
+Some production SV08s have it, some don't, and it seems to be a random
+die roll whether you get it it not.
+
+This is fixable by changing two Klipper configuration variables. To
+understand how, you have to know what is going on when auto-home fails.
+
+The Sovol 80 doesn't have end-stop switches to tell Klipper that the
+toolhead has reached an limit of its travel. Instead it uses a
+technique called "sensorless homing" which relies on the fact that
+when something obstructs the motion of a stepper motor, a current sensor
+can detect that as a momentary rise in current through the stepper.
+
+The threshold that means "stop, obstruction detected" is in
+printer.cfg, under the [tmc2209 stepper_x] and [tmc2209 stepper_y]
+setting driver_sgthrs.
+
+If this threshold is set too low, you'll get knocking as the control
+loop fails to cut the drive current to the stepper at the travel
+limit. If set too high the current sensor throws a false positive
+before it gets to its physical travel limit and the toolhead will fail
+to home. Too high a setting can also manifest as failed prints due to
+layer shift because of random variations in where the printer actually
+homes to.
+
+It is unclear why this happens or how these units pass QC inspection.
+But there's a strategy to fix it.  After following all the steps to
+establish network communication with the printer, search printer.cfg
+for the tmc2209 stepper_x.driver_sgthrs and tmc2209.stepper_y
+variables. Their legal range is 0-255. You're going to perform a
+bisection search until you find values at which homing the toolhead
+kisses both travel limits, coming to a gentle but consistent stop.
+
+For each axis that's misbehaving, set driver_sgthrs to 255 by editing
+printer.cfg, auto-home, and watch the toolhead fail to home on that
+axis.  This is expected.  Halve the value and try again.  Keep this
+up until you get knocking on that axis (probably 4 to 6 steps).
+
+Once you have knocking, bisect upward to a value at which auto-home
+produces a gentle click on that axis. Keep that value.
+
+== What the z-offset is and how to tune it
+
+Before proceeding, you will need to understand about the Z offset
+setting in Klipper. You will need to tune it, because the Sovol 08
+comes from the factory with it set too high, often producing bad
+first layers. This is probably risk avoidance on Sovol's part - better
+to set it too high rather than too low and create a serious risk that
+the user's first print will plow the nozzle into the build plate,
+damaging both.
+
+Before printing, the Sovol 08 uses an inductive sensor to measure the
+distance between the toolhead and the build plate. It typically does
+this at nine points around the build-plate center,  averaging the
+results. This process is called "bed leveling".
+
+On the Sovol 08 the first problem with bed leveling is that the
+accuracy and repeatability of the measurements from the factory-stock
+probe aren't very good. It's possible you'll go through the entire
+tuning process I describe and still have crappy, inconsistent first
+layers. If so, there won't be any alternative to upgrading to a better
+probe. Describing how to do this is out of scope for this document;
+there are several mods floating around in the user community.
+
+The z_offset parameter stored in printer.cfg (look at the bottom where
+it says DO NOT EDIT) is misnamed - it is actually the belief Klipper
+has about the distance from the bed at which the inductive probe will
+trigger. The factory default in my instance of the 2.4.6 firmware is
+2.083mm. Larger values of this stored parameter lower the home
+position of the print head; because it's set too low at the factory,
+it's very common to have to bump it up by 0.05mm to 0.15mm to get good
+first-layer cohesion.
+
+Note a dangerous curve: if you are live-adjusting the Z offset via
+Mainsail's buttons, or via the SET_GCODE_OFFSET Z_ADJUST method,
+positive increments *raise* the nozzle rather than lowering it. You
+need to be sure which context you are in before tweaking it, or you'll
+adjust it in the wrong direction and may damage your equipment.
+
+Sovol expects you to tune the z-offset value by hand during Z offset
+calibration. This process is documented - not very well - on pages
+20 and 21 of the user manual.
+
+There are some traps for the unwary here. The biggest one is that,
+though Sovol's Z-ofsset calibration silently saves whatever value
+you've adjusted it to at the end of the run (in my case it started at
+2.038 and saved 1.931) every time you recalibrate it presents you with
+an displayed offset of 0.00. Whatever adjustment you make is silently
+added to the saved offset.
+
+Another is that, because the plate and bed expand when heated, you
+ideally want to adjust Z-offset at the printing temperature of your
+filament. The procedure Sovol gives in the manual doesn't heat up
+the bed enough for best accuracy, and the user manual incorrectly
+gives the impression that you only have to dial it in once.
+
+Compounding this problem is that the factory algorithm for bed
+leveling takes too few samples too quickly, prioritizing speed
+over accuracy. (Later in this document there's a printer.cfg mod that
+addresses this.)
+
+Some of these problems can be fixed or worked around by modifying
+printer.cfg.  I will explain how to do that in a later section.
+But there's one that can't be fixed in software; the dreaded taco-bed
+syndrome, a manufacturing/QC defect that makes it very difficult
+to get good first layers on large prints.  
+
+"Taco-bed syndrome" is what you have when your print bed is warped
+away from flatness, often with a dip in the middle, sometimes with a
+bulge in the middle. Sometimes you can relax the bulge by heat-soaking
+the bed.  In extreme cases you might have to disassemble the printer
+and put thin shims underneath the bed, or even replace the bed
+entirely. I've included a link to a re-tensioning procedure in the
+references at the end of this document; I will describe how to test for taco-bed syndrome next.
+
+Here are the steps to get a height map:
+
+1. Heat-soak your bed and nozzle to your expected printing
+temperature. You can look at your OrcaSlicer settings to
+check what that is.
+
+2. In the toolhead section of the Mainsail Dashboard, click the "Home"
+button (the one with the little graphic of a house).  Then click the
+"QGL" button next to it.
+
+3. Then click "CALIBRATE" on the Heightmap page.
+
+Note: it doesn't matter whether you do the heightmap before or after
+Z-offset calibration, because your using it to find the map of
+offset differences across the plate.
+
+Here's an actually correct way to set your Z offset:
+
+1. Home the toolhead so the inductive probe will be just above the
+   plate. (You want the next step to heat it up so your measurements
+   will include its thermal expansion.)
+
+2. Heat the bed to the middle of the bed temperature range for the
+   filament you want to print with. 60C is a good start for PLA if
+   your filament manufacturer doesn't specify.
+
+2. Wait a few minutes for the bed and inductive probe to
+   heat-soak. Three minutes is about right for 60C, higher
+   temperatures should go longer.
+
+3. Heat the nozzle to 150C and wait 60 seconds or so.  The goal is to
+   make any goop on the nozzle tip soft enough to be removed by the
+   nozzle wiper.
+
+4. Print first-layer test as described in the Sovol user manual.
+
+7. Live adjust Z as it prints.
+
+Z-offset is now dialed in, and will persist through reboots. You can
+look at the printer.cfg file to see the actual value.
+
+== Smoke testing
+
+. Load filament (user manual page 18).
+
+. Perform auto-Z-offset (see the detailed description above).
+
+. Print a https://www.printables.com/model/3161-3d-benchy[test
+  benchy].
+
+I had an elephant's foot problem with the benchy and had to further
+tweak my z_offset value. If you need to do this, I recommend using
+SET_GCODE_OFFSET Z_ADJUST and SAVE_CONFIG at the console; the Mainsail
+GUI is confusing and I had trouble getting an offset change to
+actually take through it. Alternatively, if you have ssh access
+set up, you can edit printer.cfg and reboot.
+
+At this point in the proceedings you should have the printer working
+with factory-stock settings, or possibly a slightly tweaked Z offset.
+
+If you continue to have issues with first-layer quality, see
+https://wiki.sovol3d.com/en/How-to-Enhance-SV08-First-Layer-Printing[How
+to Enhance SV08 First Layer Printing] on the Sovol wiki.
+
+== References
+
+https://github.com/Wrath669/SV08BedTension[SV08 BedTension]::
+   Relaxing your bed to eliminate taco syndrome.
+
+// End
