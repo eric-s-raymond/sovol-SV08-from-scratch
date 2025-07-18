@@ -5,7 +5,7 @@
 // batchspell: add linux mainboard mcu microcontroller misconfiguration
 // batchspell: add re-tensioning sensorless sgthrs sovol
 // batchspell: add tmc toolhead unix ZOFFSET
-= Sovol08 Build and Setup Guide
+= Sovol SV08 Build and Setup Guide
 
 This is intended to be a self-contained and reasonably complete guide
 to building, interfacing, and configuring Sovol 08 3D printer

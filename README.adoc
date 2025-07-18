@@ -1,9 +1,9 @@
 // batchspell: add Klipper Patreon Sovol unix 
-= Sovol08 From Scratch
+= Sovol SV08 From Scratch
 
 This repository contains guides intended to get
 a technically inclined person from a cold start
-to a fully working and tuned Sovol08 3D printer.
+to a fully working and tuned Sovol SV08 3D printer.
 
 It's based on the experiences I had setting mine up.
 

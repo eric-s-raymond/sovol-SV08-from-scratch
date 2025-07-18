@@ -1,9 +1,9 @@
 = Tuning and Customizations
 
-If you found this before the link:setup.adoc[Sovol08 Build and Setup Guide],
+If you found this before the link:setup.adoc[Sovol SV08 Build and Setup Guide],
 you should probably read that first.
 
-This is a guide to tuning and improving your Sovol08
+This is a guide to tuning and improving your Sovol SV08
 after it has passed initial acceptance tests.
 
 Each mod here is intended to be small, self-contained, and
