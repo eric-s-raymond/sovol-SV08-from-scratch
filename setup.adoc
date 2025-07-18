@@ -7,9 +7,8 @@
 // batchspell: add tmc toolhead unix ZOFFSET
 = Sovol08 Build and Setup Guide
 
-This is intended to be a self-contained and reasonably complete
-guide to building, interfacing, configuring, and tuning the
-Sovol 08 3D printer
+This is intended to be a self-contained and reasonably complete guide
+to building, interfacing, and configuring Sovol 08 3D printer
 
 These steps pertain to a Sovol 08 purchased in July 2025, with the
 firmware version shipping at that time, 2.4.6, Mainsail 2.10.0, and
@@ -42,8 +41,8 @@ Things you should have handy:
   lifetime of your printer and may prevent flaky "mcu_extra timing"
   errors during long prints.
 
-. Check for wire bundles that might rub against the shield edge. Some
-  - perhaps even all - will have adjacent edges of the shields covered
+. Check for wire bundles that might rub against the shield edge. Some,
+  perhaps even all, will have adjacent edges of the shields covered
   with plastic guards to prevent abrasion. Wrap any bundles that don't
   in electrical tape.
 
@@ -220,14 +219,13 @@ gives the impression that you only have to dial it in once.
 
 Compounding this problem is that the factory algorithm for bed
 leveling takes too few samples too quickly, prioritizing speed
-over accuracy. (Later in this document there's a printer.cfg mod that
-addresses this.)
+over accuracy.
 
 Some of these problems can be fixed or worked around by modifying
-printer.cfg.  I will explain how to do that in a later section.
-But there's one that can't be fixed in software; the dreaded taco-bed
-syndrome, a manufacturing/QC defect that makes it very difficult
-to get good first layers on large prints.  
+printer.cfg; see the link:customizations.adoc[Tuning and
+Customizations] guide.  But there's one that can't be fixed in
+software; the dreaded taco-bed syndrome, a manufacturing/QC defect
+that makes it very difficult to get good first layers on large prints.
 
 "Taco-bed syndrome" is what you have when your print bed is warped
 away from flatness, often with a dip in the middle, sometimes with a
@@ -235,7 +233,8 @@ bulge in the middle. Sometimes you can relax the bulge by heat-soaking
 the bed.  In extreme cases you might have to disassemble the printer
 and put thin shims underneath the bed, or even replace the bed
 entirely. I've included a link to a re-tensioning procedure in the
-references at the end of this document; I will describe how to test for taco-bed syndrome next.
+references at the end of this document; I will describe how to test
+for taco-bed syndrome next.
 
 Here are the steps to get a height map:
 
