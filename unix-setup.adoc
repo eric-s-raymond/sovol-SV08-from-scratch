@@ -5,12 +5,12 @@
 // batchspell: add mainboard mcu mDNS microcontroller 
 // batchspell: add passwordless scp sensorless sovol
 // batchspell: add tmc toolhead zeroconf 
-= Unix setup instructions for the Sovol 08
+= Unix setup instructions for the Sovol SV08
 
 If you found this before the link:setup.adoc[Sovol SV08 Build and Setup Guide],
 you should probably read that first.
 
-The Sovol 08 includes two embedded computers on a single
+The Sovol SV08 includes two embedded computers on a single
 mainboard. One is the microcontroller that runs the stepper motors,
 interpreting G-code.  The other is a SOC that runs a somewhat
 stripped-down version of Debian Linux supporting Klipper. This is what
@@ -25,7 +25,7 @@ you'll get to when you ssh to the printer.
 . Set up a launch script that does "flatpak run io.github.softfever.OrcaSlicer".
 
 . Run the Setup Wizard. Under "Printer", use the Search keyword
-  to get to Sovol printers. Select Sovol 08 with your nozzle size -
+  to get to Sovol printers. Select Sovol SV08 with your nozzle size -
   the printer ships with an 0.4 nozzle. These are Sovol's official
   profiles, so you won't need to download those from the Sovol wiki.
 

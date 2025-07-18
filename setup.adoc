@@ -8,9 +8,9 @@
 = Sovol SV08 Build and Setup Guide
 
 This is intended to be a self-contained and reasonably complete guide
-to building, interfacing, and configuring Sovol 08 3D printer
+to building, interfacing, and configuring Sovol SV08 3D printer
 
-These steps pertain to a Sovol 08 purchased in July 2025, with the
+These steps pertain to a Sovol SV08 purchased in July 2025, with the
 firmware version shipping at that time, 2.4.6, Mainsail 2.10.0, and
 V1.0 of the user manual.
 
@@ -119,10 +119,10 @@ one or both axes, so there are actually four possible failure modes.
 Any of the four can prevent "Auto Z Calibrate" from working, stopping
 your acceptance testing.
 
-This problem was reported in gerGo's setup video:
-https://www.youtube.com/watch?v=xt6uzXgRJdc&list=PL36BnrhYaGnLgOlfz_Jw0z_YXlw8OexdO
-Some production SV08s have it, some don't, and it seems to be a random
-die roll whether you get it it not.
+This problem was reported in
+https://www.youtube.com/watch?v=xt6uzXgRJdc&list=PL36BnrhYaGnLgOlfz_Jw0z_YXlw8OexdO[gerGo's
+setup video].  Some production SV08s have it, some don't, and it seems
+to be a random die roll whether you get it it not.
 
 This is fixable by changing two Klipper configuration variables. To
 understand how, you have to know what is going on when auto-home fails.
@@ -139,7 +139,7 @@ setting driver_sgthrs.
 
 If this threshold is set too low, you'll get knocking as the control
 loop fails to cut the drive current to the stepper at the travel
-limit. If set too high the current sensor throws a false positive
+limits. If set too high the current sensor throws a false positive
 before it gets to its physical travel limit and the toolhead will fail
 to home. Too high a setting can also manifest as failed prints due to
 layer shift because of random variations in where the printer actually
@@ -164,19 +164,19 @@ produces a gentle click on that axis. Keep that value.
 == What the z-offset is and how to tune it
 
 Before proceeding, you will need to understand about the Z offset
-setting in Klipper. You will need to tune it, because the Sovol 08
+setting in Klipper. You will need to tune it, because the SV08
 comes from the factory with it set too high, often producing bad
 first layers. This is probably risk avoidance on Sovol's part - better
 to set it too high rather than too low and create a serious risk that
 the user's first print will plow the nozzle into the build plate,
 damaging both.
 
-Before printing, the Sovol 08 uses an inductive sensor to measure the
+Before printing, the Sovol SV08 uses an inductive sensor to measure the
 distance between the toolhead and the build plate. It typically does
 this at nine points around the build-plate center,  averaging the
 results. This process is called "bed leveling".
 
-On the Sovol 08 the first problem with bed leveling is that the
+On the Sovol SV08 the first problem with bed leveling is that the
 accuracy and repeatability of the measurements from the factory-stock
 probe aren't very good. It's possible you'll go through the entire
 tuning process I describe and still have crappy, inconsistent first
