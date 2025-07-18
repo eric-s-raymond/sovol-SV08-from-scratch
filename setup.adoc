@@ -86,12 +86,11 @@ Things you should have handy:
   the drag on the cable is minimized. Do this just before clipping the
   PTFE tube to the toolhead cable.
 
-. The magnets holding on the print-head cover aren't very strong.
-  It can get bumped off by upward-projecting parts of a model,
-  ruining your print and possibly tearing the cooling-fan wires.
-  Zip-tie that thing on, or for a more elegant solution use gerGo's
-  PETG clip mod:
-  https://cults3d.com/en/3d-model/tool/sovol-sv08-macro-additions
+. The magnets holding on the print-head cover aren't very strong.  It
+  can get bumped off by upward-projecting parts of a model, ruining
+  your print and possibly tearing the cooling-fan wires.  Zip-tie that
+  thing on, or for a more elegant solution use one of the PETG clip
+  mods in the References at the end of this HOWTO.
 
 You should now have a fully assembled and wired printer.
 
@@ -308,5 +307,14 @@ link:customizations.adoc[Tuning and Customizations]
 
 https://github.com/Wrath669/SV08BedTension[SV08 BedTension]::
    Relaxing your bed to eliminate taco syndrome.
+
+https://www.printables.com/model/1087011-sovol-sv08-extruder-housing-clamp[Sovol SV08 Extruder Housing Clamp]::
+   Print in PETG for springiness.
+
+https://cults3d.com/en/3d-model/tool/sovol-sv08-macro-additions[gerGo's PETG clip mod:]::
+   Print in PETG for springiness. Bundled with a a spool choke ring
+   an d a couple of other minor mods.
+
+
 
 // End
