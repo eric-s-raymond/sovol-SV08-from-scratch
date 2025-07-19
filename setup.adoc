@@ -312,8 +312,8 @@ https://www.printables.com/model/1087011-sovol-sv08-extruder-housing-clamp[Sovol
    Print in PETG for springiness.
 
 https://cults3d.com/en/3d-model/tool/sovol-sv08-macro-additions[gerGo's PETG clip mod:]::
-   Print in PETG for springiness. Bundled with a a spool choke ring
-   an d a couple of other minor mods.
+   Print in PETG for springiness. Bundled with a spool choke ring
+   and a couple of other minor mods.
 
 
 

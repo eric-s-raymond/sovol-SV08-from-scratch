@@ -42,3 +42,28 @@ pid_deriv_time: 5.0
 
 This mod was first described at
 https://www.youtube.com/watch?v=t3RJ5DbOdcs
+
+== Improved bed leveling
+
+This is gerGo's probe fix.  It makes bed leveling a bit slower but
+more accurate, giving you better first layers. There are several mods
+like this floating around the user community; they're all variations
+on the theme of "go a bit slower, take more samples, get more accuracy".
+
+// batchspell: off
+----
+[probe]
+pin: extra_mcu:PB6
+x_offset: -17                  
+y_offset: 10             
+#z_offset : 0
+speed: 10  #  was 15.0
+speed: 10.0  # was 5.0
+samples: 3  # was 2
+sample_retract_dist: 5.0 # was 2.0
+lift_speed: 25 # was 50
+samples_result: median # was average
+samples_tolerance: 0.0125 # was 0.016
+samples_tolerance_retries: 10 # was 2
+----
+// batchspell: on
