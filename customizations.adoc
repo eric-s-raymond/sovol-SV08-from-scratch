@@ -67,3 +67,6 @@ samples_tolerance: 0.0125 # was 0.016
 samples_tolerance_retries: 10 # was 2
 ----
 // batchspell: on
+
+This mod was first described at
+https://www.youtube.com/watch?v=xl4tBgMcuzA
