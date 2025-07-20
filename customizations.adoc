@@ -70,3 +70,29 @@ samples_tolerance_retries: 10 # was 2
 
 This mod was first described at
 https://www.youtube.com/watch?v=xl4tBgMcuzA
+
+== Heat soaking
+
+You can use this macro to ensure the bed is up to a uniform
+temperature correct for printing before starting a print.
+You can call it from the Mainsail console like this:
+"HEAT_SOAK TEMPERATURE=80". If you don't specify a temperature
+it will target 65C, which is good for generic PLA or PETG.
+
+To install, put it anywhere in Macro.cfg or printer.cfg.
+
+// batchspell: off
+----
+[gcode_macro HEAT_SOAK]
+gcode:
+  {% set soaktemp = params.TEMPERATURE|default(65)|int %}
+  M117 Heat soak...
+  M140 T0 S{soaktemp}
+  {% if printer.toolhead.homed_axes != "xyz" %}
+    G28
+  {% endif %}
+  G90 
+  G1 Z5 F6000
+  M84
+----
+// batchspell: on
