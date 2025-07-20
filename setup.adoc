@@ -29,7 +29,7 @@ Things you should have handy:
 * A set of small self-adhesive heatsinks. The sort sold for
   Raspberry Pis and similar SBCs will do nicely.
 
-* A bottle of red Loctite.
+* A bottle of purple Loctite.
 
 * Optional: A clamp-on ferrite choke sized for a USB cable.
 
@@ -47,7 +47,7 @@ Things you should have handy:
   in electrical tape.
 
 . Check for loose fasteners in the toolhead. Loctite them.
-  Note: use red Loctite only - you'll regret it if you use the
+  Note: use purple Loctite only - you'll regret it if you use the
   stronger stuff.
 
 == Assembly
