@@ -52,9 +52,11 @@ Things you should have handy:
 
 == Assembly
 
-. Perform assembly as described in pages 05-14 of the
-  User's Manual. See Sovol's video on unboxing and assembly at
-  https://www.youtube.com/watch?v=PmB53XONPdQ
+. Perform assembly as described in pages 05-14 of the User's
+  Manual. See https://www.youtube.com/watch?v=PmB53XONPdQ[Sovol's
+  video on unboxing and assembly]. Loctite the horizontal frame bolts;
+  I had one work its way loose and fall out, probably due to
+  vibration, about a week after assembling mine.
 
 . Note that the two compression collars for the ends of the PTFE tube
   (mated pieces of blue and black plastic) have a tendency to fly off;
