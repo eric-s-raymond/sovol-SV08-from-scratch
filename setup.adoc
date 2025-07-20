@@ -54,7 +54,7 @@ Things you should have handy:
 
 . Perform assembly as described in pages 05-14 of the User's
   Manual. See https://www.youtube.com/watch?v=PmB53XONPdQ[Sovol's
-  video on unboxing and assembly]. Loctite the horizontal frame bolts;
+  video on unboxing and assembly]. Loctite the horizontal frame screws;
   I had one work its way loose and fall out, probably due to
   vibration, about a week after assembling mine.
 
