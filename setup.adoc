@@ -4,7 +4,7 @@
 // batchspell: add gcode gerGo's heatsinks heightmap http io
 // batchspell: add linux mainboard mcu microcontroller misconfiguration
 // batchspell: add re-tensioning sensorless sgthrs sovol
-// batchspell: add tmc toolhead unix ZOFFSET
+// batchspell: add tmc toolhead unix ZOFFSET HOWTO adoc
 = Sovol SV08 Build and Setup Guide
 
 This is intended to be a self-contained and reasonably complete guide

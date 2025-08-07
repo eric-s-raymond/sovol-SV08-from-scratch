@@ -1,4 +1,4 @@
-// batchspell: add Klipper Patreon Sovol unix 
+// batchspell: add Klipper Patreon Sovol unix SV
 = Sovol SV08 From Scratch
 
 This repository contains guides intended to get

@@ -1,4 +1,5 @@
 = Tuning and Customizations
+// batchspell: add cfg 
 
 If you found this before the link:setup.adoc[Sovol SV08 Build and Setup Guide],
 you should probably read that first.
