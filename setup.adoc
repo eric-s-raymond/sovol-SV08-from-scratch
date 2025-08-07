@@ -303,8 +303,8 @@ to Enhance SV08 First Layer Printing] on the Sovol wiki.
 
 == Building the enclosure
 
-Find the enclosure installation video on YouTube, it is
-more up to date than the manual. Link in References, below.
+Find the enclosure installation video on YouTube, it is more up to
+date than the v1.1 manual. Link in References, below.
 
 The depiction of the original wiring harness cover on page 05 is
 misleading, because it shows the part as it appears when extracted
@@ -312,12 +312,13 @@ from the hole it plugs in the printer base,
 
 No, you are not hallucinating. The actual wiring bracket for the upper
 end of the tow chain doesn't match the illustration in the enclosure
-assembly manual - the newer version has a long horizontal shank
+assembly manual v1.1 - the newer version has a long horizontal shank
 intended to offset the tow chain anchor from the mounting hole. And
 both versions are shown in the installation video.
 
 In my kit, the three screw used to connect the tow chain to the bracket
-(assembly step 2 in the manual) were labeled 'Step 3' on their bag.
+(assembly step 2 in the manual) were labeled 'Step 3' on their
+bag. It's also labeled that way in the video.
 
 == What To Read Next
 
