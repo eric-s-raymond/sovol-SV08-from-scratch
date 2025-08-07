@@ -301,6 +301,24 @@ If you continue to have issues with first-layer quality, see
 https://wiki.sovol3d.com/en/How-to-Enhance-SV08-First-Layer-Printing[How
 to Enhance SV08 First Layer Printing] on the Sovol wiki.
 
+== Building the enclosure
+
+Find the enclosure installation video on YouTube, it is
+more up to date than the manual. Link in References, below.
+
+The depiction of the original wiring harness cover on page 05 is
+misleading, because it shows the part as it appears when extracted
+from the hole it plugs in the printer base,
+
+No, you are not hallucinating. The actual wiring bracket for the upper
+end of the tow chain doesn't match the illustration in the enclosure
+assembly manual - the newer version has a long horizontal shank
+intended to offset the tow chain anchor from the mounting hole. And
+both versions are shown in the installation video.
+
+In my kit, the three screw used to connect the tow chain to the bracket
+(assembly step 2 in the manual) were labeled 'Step 3' on their bag.
+
 == What To Read Next
 
 link:customizations.adoc[Tuning and Customizations]
@@ -317,6 +335,7 @@ https://cults3d.com/en/3d-model/tool/sovol-sv08-macro-additions[gerGo's PETG cli
    Print in PETG for springiness. Bundled with a spool choke ring
    and a couple of other minor mods.
 
-
+https://www.youtube.com/watch?v=Jo6nNUQOrZI::
+   Enclosure assembly video.
 
 // End
