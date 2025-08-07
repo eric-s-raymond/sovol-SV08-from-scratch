@@ -304,7 +304,8 @@ to Enhance SV08 First Layer Printing] on the Sovol wiki.
 == Building the enclosure
 
 Find the enclosure installation video on YouTube, it is more up to
-date than the v1.1 manual. Link in References, below.
+date than the v1.1 manual. The installation video by gerGo is better;
+see the links in References, below.
 
 The depiction of the original wiring harness cover on page 05 is
 misleading, because it shows the part as it appears when extracted
@@ -314,11 +315,18 @@ No, you are not hallucinating. The actual wiring bracket for the upper
 end of the tow chain doesn't match the illustration in the enclosure
 assembly manual v1.1 - the newer version has a long horizontal shank
 intended to offset the tow chain anchor from the mounting hole. And
-both versions are shown in the installation video.
+both versions are shown in the installation video. The gerGo video
+features (and painfully works around) the limitations of the older
+part.
 
 In my kit, the three screw used to connect the tow chain to the bracket
 (assembly step 2 in the manual) were labeled 'Step 3' on their
 bag. It's also labeled that way in the video.
+
+The chamber fan goes on the *outside* of ther rear panel, with the fan
+cable threading through to thge inside.  Neither the enclosure manual
+nor the Sovol installation videpoi is explicit abou this, though
+gerGo's video is.
 
 == What To Read Next
 
@@ -337,6 +345,9 @@ https://cults3d.com/en/3d-model/tool/sovol-sv08-macro-additions[gerGo's PETG cli
    and a couple of other minor mods.
 
 https://www.youtube.com/watch?v=Jo6nNUQOrZI::
-   Enclosure assembly video.
+   Sovol's enclosure assembly video.
+
+https://www.youtube.com/watch?v=VqVO9W1lIT0::
+   gerGO's enclosure assembly video.
 
 // End

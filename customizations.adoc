@@ -97,3 +97,10 @@ gcode:
   M84
 ----
 // batchspell: on
+
+== Upgrades not yet applied
+
+I have the MicroSwiss upgrade hotend for the SV08, but haven't
+installed it yet.  This is a useful installation vudeo:
+
+https://www.youtube.com/watch?v=9ZrIIq5CX9c&t=116s
