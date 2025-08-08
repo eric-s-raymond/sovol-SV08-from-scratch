@@ -104,3 +104,13 @@ I have the MicroSwiss upgrade hotend for the SV08, but haven't
 installed it yet.  This is a useful installation vudeo:
 
 https://www.youtube.com/watch?v=9ZrIIq5CX9c&t=116s
+
+SV08 riser:
+
+https://drive.google.com/drive/folders/1fJzGwCswiRXadmaaq2O9OR1fVISvKaK1
+
+SV08 minimalist toolhead:
+
+https://www.printables.com/model/1324039-sv08-minimal-toolhead-cover-with-herome-ducting
+
+Needs 4.2mm round magnets.
