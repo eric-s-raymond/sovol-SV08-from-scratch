@@ -4,7 +4,7 @@
 // batchspell: add gcode gerGo's heatsinks heightmap http io
 // batchspell: add linux mainboard mcu microcontroller misconfiguration
 // batchspell: add re-tensioning sensorless sgthrs sovol
-// batchspell: add tmc toolhead unix ZOFFSET HOWTO adoc
+// batchspell: add tmc toolhead unix ZOFFSET HOWTO adoc gerGo
 = Sovol SV08 Build and Setup Guide
 
 This is intended to be a self-contained and reasonably complete guide
@@ -117,7 +117,7 @@ persistent layer shifts when printing you may need to revisit it.)
 If you are unlucky, auto-home may fail in one of two ways: either the print
 head will stop moving before it should, failing to home, or it might
 hit its motion limit with a loud knocking noise. In extreme cases the
-steppers may repleatedly try to drive the gantry past its physical
+steppers may repeatedly try to drive the gantry past its physical
 limits, producing loud chattering noises.
 
 This can happen on one or both axes, so there are actually four
@@ -157,7 +157,7 @@ But there's a strategy to fix it.
 
 Look at the the four black ribbon cables from the mainboard to the
 stepper motors.  These should be visible from the bottom of the
-printer even when the shield is stil on the motherboard electronics.
+printer even when the shield is still on the motherboard electronics.
 Make sure they are firmly seated - loose stepper-motor cables can
 produce the chatterbox failure. Pull on them gently; if there's any
 give, push in firmly to reseat them. If this fixes your problem, you're done.
@@ -337,13 +337,13 @@ In my kit, the three screws used to connect the tow chain to the bracket
 (assembly step 2 in the manual) were labeled 'Step 3' on their
 bag. It's also labeled that way in the video.
 
-The chamber fan goes on the *outside* of ther rear panel, with the fan
-cable threading through to thge inside.  Neither the enclosure manual
-nor the Sovol installation videpoi is explicit about this, though
+The chamber fan goes on the *outside* of the rear panel, with the fan
+cable threading through to the inside.  Neither the enclosure manual
+nor the Sovol installation video is explicit about this, though
 gerGo's video is.
 
 Important: after building the enclosure, check that all the stepper
-motor connectors are firmly seated. Mine got loosened, leating to
+motor connectors are firmly seated. Mine got loosened, leading to
 chatterbox failure.
 
 == What To Read Next
@@ -366,6 +366,6 @@ https://www.youtube.com/watch?v=Jo6nNUQOrZI::
    Sovol's enclosure assembly video.
 
 https://www.youtube.com/watch?v=VqVO9W1lIT0::
-   gerGO's enclosure assembly video.
+   gerGo's enclosure assembly video.
 
 // End

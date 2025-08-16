@@ -1,5 +1,5 @@
 = Tuning and Customizations
-// batchspell: add cfg 
+// batchspell: add cfg MicroSwiss hotend
 
 If you found this before the link:setup.adoc[Sovol SV08 Build and Setup Guide],
 you should probably read that first.
@@ -98,10 +98,19 @@ gcode:
 ----
 // batchspell: on
 
+== Improved spool holder cap
+
+I had a persistent issue with filament tangles due to the spool holder
+spinning a bit too freely, resulting in backlash after extruder pulls
+that caused filament to jump off the spool and tangle. Replacing the
+stock spool end with this print fixed the problem.
+
+https://www.printables.com/model/987129-better-spool-holder-cap-for-sovol-sv08
+
 == Upgrades not yet applied
 
 I have the MicroSwiss upgrade hotend for the SV08, but haven't
-installed it yet.  This is a useful installation vudeo:
+installed it yet.  This is a useful installation video:
 
 https://www.youtube.com/watch?v=9ZrIIq5CX9c&t=116s
 
