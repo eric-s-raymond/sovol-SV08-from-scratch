@@ -116,20 +116,25 @@ persistent layer shifts when printing you may need to revisit it.)
 
 If you are unlucky, auto-home may fail in one of two ways: either the print
 head will stop moving before it should, failing to home, or it might
-hit its motion limit with a loud knocking noise. This can happen on
-one or both axes, so there are actually four possible failure modes.
-Any of the four can prevent "Auto Z Calibrate" from working, stopping
-your acceptance testing.
+hit its motion limit with a loud knocking noise. In extreme cases the
+steppers may repleatedly try to drive the gantry past its physical
+limits, producing loud chattering noises.
+
+This can happen on one or both axes, so there are actually four
+possible failure modes.  Any of the four can prevent "Auto Z
+Calibrate" from working, stopping your acceptance testing.
 
 This problem was reported in
 https://www.youtube.com/watch?v=xt6uzXgRJdc&list=PL36BnrhYaGnLgOlfz_Jw0z_YXlw8OexdO[gerGo's
 setup video].  Some production SV08s have it, some don't, and it seems
 to be a random die roll whether you get it it not.
 
-This is fixable by changing two Klipper configuration variables. To
-understand how, you have to know what is going on when auto-home fails.
+This is fixable by making sure you don't have loose stepper
+connections sand changing two Klipper configuration variables. To
+understand how, you have to know what is going on when auto-home
+fails.
 
-The Sovol 80 doesn't have end-stop switches to tell Klipper that the
+The Sovol 08 doesn't have end-stop switches to tell Klipper that the
 toolhead has reached an limit of its travel. Instead it uses a
 technique called "sensorless homing" which relies on the fact that
 when something obstructs the motion of a stepper motor, a current sensor
@@ -139,21 +144,30 @@ The threshold that means "stop, obstruction detected" is in
 printer.cfg, under the [tmc2209 stepper_x] and [tmc2209 stepper_y]
 setting driver_sgthrs.
 
-If this threshold is set too low, you'll get knocking as the control
-loop fails to cut the drive current to the stepper at the travel
-limits. If set too high the current sensor throws a false positive
-before it gets to its physical travel limit and the toolhead will fail
-to home. Too high a setting can also manifest as failed prints due to
-layer shift because of random variations in where the printer actually
-homes to.
+If this threshold is set too low, you'll get knocking or chattering as
+the control loop fails to cut the drive current to the stepper at the
+travel limits. If set too high the current sensor throws a false
+positive before it gets to its physical travel limit and the toolhead
+will fail to home. Too high a setting can also manifest as failed
+prints due to layer shift because of random variations in where the
+printer actually homes to.
 
 It is unclear why this happens or how these units pass QC inspection.
-But there's a strategy to fix it.  After following all the steps to
-establish network communication with the printer, search printer.cfg
-for the tmc2209 stepper_x.driver_sgthrs and tmc2209.stepper_y
-variables. Their legal range is 0-255. You're going to perform a
-bisection search until you find values at which homing the toolhead
-kisses both travel limits, coming to a gentle but consistent stop.
+But there's a strategy to fix it.
+
+Look at the the four black ribbon cables from the mainboard to the
+stepper motors.  These should be visible from the bottom of the
+printer even when the shield is stil on the motherboard electronics.
+Make sure they are firmly seated - loose stepper-motor cables can
+produce the chatterbox failure. Pull on them gently; if there's any
+give, push in firmly to reseat them. If this fixes your problem, you're done.
+
+Otherwise: After following all the steps to establish network
+communication with the printer, search printer.cfg for the tmc2209
+stepper_x.driver_sgthrs and tmc2209.stepper_y variables. Their legal
+range is 0-255. You're going to perform a bisection search until you
+find values at which homing the toolhead kisses both travel limits,
+coming to a gentle but consistent stop.
 
 For each axis that's misbehaving, set driver_sgthrs to 255 by editing
 printer.cfg, auto-home, and watch the toolhead fail to home on that
@@ -319,14 +333,18 @@ both versions are shown in the installation video. The gerGo video
 features (and painfully works around) the limitations of the older
 part.
 
-In my kit, the three screw used to connect the tow chain to the bracket
+In my kit, the three screws used to connect the tow chain to the bracket
 (assembly step 2 in the manual) were labeled 'Step 3' on their
 bag. It's also labeled that way in the video.
 
 The chamber fan goes on the *outside* of ther rear panel, with the fan
 cable threading through to thge inside.  Neither the enclosure manual
-nor the Sovol installation videpoi is explicit abou this, though
+nor the Sovol installation videpoi is explicit about this, though
 gerGo's video is.
+
+Important: after building the enclosure, check that all the stepper
+motor connectors are firmly seated. Mine got loosened, leating to
+chatterbox failure.
 
 == What To Read Next
 
