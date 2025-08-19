@@ -33,6 +33,8 @@ Things you should have handy:
 
 * Optional: A clamp-on ferrite choke sized for a USB cable.
 
+* Optional: a glue gun.
+
 == Pre-assembly steps
 
 . Take the metal shield off the printer base before assembly. Ground
@@ -95,6 +97,15 @@ Things you should have handy:
   mods in the References at the end of this HOWTO.
 
 You should now have a fully assembled and wired printer.
+
+Optional step: Use the glue gun to secure the four JST
+connectors. (You won't need to take the shield protecting the
+electronics off; the connectors are the ones that mate with the
+motors.)
+
+After initial setup, I had two epiosodes of autohome failure that were
+fixed by reseating the stepper connectors.  This is not a
+commonly-reported bug, but you may want to hedge against it anyway.
 
 == Notes on the installation manual
 
