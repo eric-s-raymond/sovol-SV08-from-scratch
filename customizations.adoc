@@ -107,6 +107,23 @@ stock spool end with this print fixed the problem.
 
 https://www.printables.com/model/987129-better-spool-holder-cap-for-sovol-sv08
 
+== Door stops for PLA printing.
+
+I use these to hold the doors open during PLA prints:
+
+Print https://www.printables.com/model/1003732-sv08-door-stop
+
+== Improved post-soak routine
+
+At Macro.cfg:304, change "QUAD_GANTRY_LEVEL" to
+"_CALIBRATION_ZOFFSET". Do not omit the beginning underscore.
+
+This runs a gantry level, cleans the nozzle, probes the bed to find
+"zero", then checks the probe distance from zero as well as
+calibrating the probe pressure. Slows down strart of printing
+slightly but imnproves first-layer reliability when you're doing
+multiple back-to-back prints.
+
 == Upgrades not yet applied
 
 I have the MicroSwiss upgrade hotend for the SV08, but haven't
