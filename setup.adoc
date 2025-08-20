@@ -141,7 +141,7 @@ setup video].  Some production SV08s have it, some don't, and it seems
 to be a random die roll whether you get it it not.
 
 This is fixable by making sure you don't have loose stepper
-connections sand changing two Klipper configuration variables. To
+connections and changing two Klipper configuration variables. To
 understand how, you have to know what is going on when auto-home
 fails.
 
@@ -275,7 +275,7 @@ button (the one with the little graphic of a house).  Then click the
 3. Then click "CALIBRATE" on the Heightmap page.
 
 Note: it doesn't matter whether you do the heightmap before or after
-Z-offset calibration, because your using it to find the map of
+Z-offset calibration, because you're using it to find the map of
 offset differences across the plate.
 
 Here's an actually correct way to set your Z offset:
