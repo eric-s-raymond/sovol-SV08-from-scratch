@@ -4,7 +4,7 @@
 // batchspell: add gcode gerGo's heatsinks heightmap http io
 // batchspell: add linux mainboard mcu microcontroller misconfiguration
 // batchspell: add re-tensioning sensorless sgthrs sovol
-// batchspell: add tmc toolhead unix ZOFFSET HOWTO adoc gerGo
+// batchspell: add tmc toolhead unix ZOFFSET HOWTO adoc gerGo JST Ender
 = Sovol SV08 Build and Setup Guide
 
 This is intended to be a self-contained and reasonably complete guide
@@ -91,7 +91,7 @@ Things you should have handy:
   PTFE tube to the toolhead cable.
 
 . The magnets holding on the tool-head cover aren't very
-  strong. Check if your toolhead is rescent enough to have a retaining 
+  strong. Check if your toolhead is recent enough to have a retaining 
   boss sticking through the top. If it doesn't, the tool-head cover
   can get bumped off by upward-projecting parts of a model, ruining
   your print and possibly tearing the cooling-fan wires.  Zip-tie that
@@ -99,7 +99,7 @@ Things you should have handy:
   mods in the References at the end of this HOWTO.
 
 . Inspect the JST connectors plugged into the four stepper motors on
-  the underside of the base atnear its four corners. You won't need to
+  the underside of the base near its four corners. You won't need to
   take the shield protecting the electronics off to do this.  Pull on
   them gently; if there's any give, push in firmly to reseat them.
   After making sure they are firmly seated, apply a bit of hot
@@ -118,7 +118,7 @@ is actually expected time to completion.
 
 After assembly, the next step the Sovol manual advises you to take is
 to perform an "Auto Z Calibrate". I ran into a problem here that
-turned into weeks of trobleshooting and false starts.
+turned into weeks of troubleshooting and false starts.
 
 The symptom was that I had multiple episodes of auto-home failure that
 could be fixed by reseating the stepper connectors.  This is why the
@@ -331,6 +331,12 @@ set up, you can edit printer.cfg and reboot.
 
 At this point in the proceedings you should have the printer working
 with factory-stock settings, or possibly a slightly tweaked Z offset.
+
+If you get horrible spaghetti, the first thing to check before you
+despair of the printer is the humidity. Filament that has absorbed
+moisture is bad at forming inter-layer bonds. If you live in a
+chroniically humid area or it's summer, you probably need
+a fiilament dryer.
 
 If you continue to have issues with first-layer quality, see
 https://wiki.sovol3d.com/en/How-to-Enhance-SV08-First-Layer-Printing[How

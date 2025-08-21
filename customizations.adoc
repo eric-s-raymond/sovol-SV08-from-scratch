@@ -120,8 +120,8 @@ At Macro.cfg:304, change "QUAD_GANTRY_LEVEL" to
 
 This runs a gantry level, cleans the nozzle, probes the bed to find
 "zero", then checks the probe distance from zero as well as
-calibrating the probe pressure. Slows down strart of printing
-slightly but imnproves first-layer reliability when you're doing
+calibrating the probe pressure. Slows down start of printing
+slightly but improves first-layer reliability when you're doing
 multiple back-to-back prints.
 
 == Upgrades not yet applied
