@@ -31,9 +31,9 @@ Things you should have handy:
 
 * A bottle of purple Loctite.
 
-* Optional: A clamp-on ferrite choke sized for a USB cable.
+* A glue gun.
 
-* Optional: a glue gun.
+* Optional: A clamp-on ferrite choke sized for a USB cable.
 
 == Pre-assembly steps
 
@@ -90,22 +90,22 @@ Things you should have handy:
   the drag on the cable is minimized. Do this just before clipping the
   PTFE tube to the toolhead cable.
 
-. The magnets holding on the print-head cover aren't very strong.  It
+. The magnets holding on the tool-head cover aren't very
+  strong. Check if your toolhead is rescent enough to have a retaining 
+  boss sticking through the top. If it doesn't, the tool-head cover
   can get bumped off by upward-projecting parts of a model, ruining
   your print and possibly tearing the cooling-fan wires.  Zip-tie that
   thing on, or for a more elegant solution use one of the PETG clip
   mods in the References at the end of this HOWTO.
 
+. Inspect the JST connectors plugged into the four stepper motors on
+  the underside of the base atnear its four corners. You won't need to
+  take the shield protecting the electronics off to do this.  Pull on
+  them gently; if there's any give, push in firmly to reseat them.
+  After making sure they are firmly seated, apply a bit of hot
+  glue so they will stay that way.
+
 You should now have a fully assembled and wired printer.
-
-Optional step: Use the glue gun to secure the four JST
-connectors. (You won't need to take the shield protecting the
-electronics off; the connectors are the ones that mate with the
-motors.)
-
-After initial setup, I had two epiosodes of autohome failure that were
-fixed by reseating the stepper connectors.  This is not a
-commonly-reported bug, but you may want to hedge against it anyway.
 
 == Notes on the installation manual
 
@@ -114,16 +114,26 @@ Temperature display on the screen is in Centigrade.
 What's mislabeled "Printing Progress Time" on page 16
 is actually expected time to completion.
 
-== Test for and fix current-sensor misconfiguration
+== Test for and fix auto-homing problems
 
 After assembly, the next step the Sovol manual advises you to take is
-to perform an "Auto Z Calibrate".  However, there is an occasional
-problem with these printers as shipped that you need to check for
-first: misconfiguration of the stepper current sensors.
+to perform an "Auto Z Calibrate". I ran into a problem here that
+turned into weeks of trobleshooting and false starts.
 
-Auto-home the printer from the display screen. If you are lucky, you
-will succeed and can skip the rest of this section.  (But if you have
-persistent layer shifts when printing you may need to revisit it.)
+The symptom was that I had multiple episodes of auto-home failure that
+could be fixed by reseating the stepper connectors.  This is why the
+installation procedure includes the step where you make sure they are
+fully plugged in and apply the glue gun, to make sure vibration from
+normal operation cannot unseat them. Many other printers (notably
+including the Ender 3v2) hot-glue these connectors at the factory.
+
+(If you ever need to unplug them, hot glue can be dissolved with IPA
+or scraped off with a craft knife without damaging the connectors.)
+
+To test for this issue, auto-home the printer from the display
+screen. If you are lucky, you will succeed and can skip the rest of
+this section.  (But if you have persistent layer shifts when printing
+you may need to revisit it.)
 
 If you are unlucky, auto-home may fail in one of two ways: either the print
 head will stop moving before it should, failing to home, or it might
@@ -141,9 +151,9 @@ setup video].  Some production SV08s have it, some don't, and it seems
 to be a random die roll whether you get it it not.
 
 This is fixable by making sure you don't have loose stepper
-connections and changing two Klipper configuration variables. To
-understand how, you have to know what is going on when auto-home
-fails.
+connections, and if that doesn't work by changing two Klipper
+configuration variables. To understand how, you have to know what is
+going on when auto-home fails.
 
 The Sovol 08 doesn't have end-stop switches to tell Klipper that the
 toolhead has reached an limit of its travel. Instead it uses a
@@ -175,10 +185,10 @@ give, push in firmly to reseat them. If this fixes your problem, you're done.
 
 Otherwise: After following all the steps to establish network
 communication with the printer, search printer.cfg for the tmc2209
-stepper_x.driver_sgthrs and tmc2209.stepper_y variables. Their legal
-range is 0-255. You're going to perform a bisection search until you
-find values at which homing the toolhead kisses both travel limits,
-coming to a gentle but consistent stop.
+stepper_x.driver_sgthrs and tmc2209.stepper_y.driver_sgthrs
+variables. Their legal range is 0-255. You're going to perform a
+bisection search until you find values at which homing the toolhead
+kisses both travel limits, coming to a gentle but consistent stop.
 
 For each axis that's misbehaving, set driver_sgthrs to 255 by editing
 printer.cfg, auto-home, and watch the toolhead fail to home on that
