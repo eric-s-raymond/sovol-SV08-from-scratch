@@ -369,10 +369,6 @@ cable threading through to the inside.  Neither the enclosure manual
 nor the Sovol installation video is explicit about this, though
 gerGo's video is.
 
-Important: after building the enclosure, check that all the stepper
-motor connectors are firmly seated. Mine got loosened, leading to
-chatterbox failure.
-
 == What To Read Next
 
 link:customizations.adoc[Tuning and Customizations]
