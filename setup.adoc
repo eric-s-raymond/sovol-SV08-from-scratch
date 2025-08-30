@@ -332,15 +332,12 @@ set up, you can edit printer.cfg and reboot.
 At this point in the proceedings you should have the printer working
 with factory-stock settings, or possibly a slightly tweaked Z offset.
 
-If you get horrible spaghetti, the first thing to check before you
-despair of the printer is the humidity. Filament that has absorbed
-moisture is bad at forming inter-layer bonds. If you live in a
-chroniically humid area or it's summer, you probably need
-a fiilament dryer.
-
 If you continue to have issues with first-layer quality, see
 https://wiki.sovol3d.com/en/How-to-Enhance-SV08-First-Layer-Printing[How
 to Enhance SV08 First Layer Printing] on the Sovol wiki.
+
+For general advice on diagnosing print failures, see
+link:advice.html[Actionable Advice].
 
 == Building the enclosure
 

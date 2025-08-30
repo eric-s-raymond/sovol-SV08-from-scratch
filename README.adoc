@@ -1,4 +1,4 @@
-// batchspell: add Klipper Patreon Sovol unix SV
+v// batchspell: add Klipper Patreon Sovol unix SV
 = Sovol SV08 From Scratch
 
 This repository contains guides intended to get
@@ -19,8 +19,10 @@ modifications by people who aren't me.
 
 * link:customizations.adoc[Tuning and Customizations]
 
+* link:advice.html[Actionable Advice]
+
 Much of the material in the set-up guide is generic to all Klipper
-printers, but not all of it.
+printers, but not all of it. The Actionable Advice is generic.
 
 If you find this work useful, please
 https://www.patreon.com/esr[support me on Patreon.]

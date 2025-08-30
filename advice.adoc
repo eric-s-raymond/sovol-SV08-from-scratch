@@ -1,0 +1,64 @@
+= Actionable Advice
+// batchspell: add RFI
+
+== Build-time advice
+
+Some advice in the link:setup.html[SV08 setup guide] generalizes to
+other printer types:
+
+1. Loctite your frame screws against vibration.
+
+2. Tack down your stepper-motor connectors with hot glue against
+   vibration.
+
+3. Apply armor tape anywhere wire bundles might rub against a metal
+   edge.
+
+4. Apply stick-on heatsinks to the processor chops on your mainboard
+
+5. Put a snap-on ferrite choke on your toolhead cable against RFI.
+
+== Diagnosing Print Failures
+
+If you get horrible spaghetti, the first thing to check before you
+despair of the printer is the humidity. Filament that has absorbed
+moisture is bad at forming inter-layer bonds. If you live in a
+chronically humid area or it's summer, you probably need a filament
+dryer.
+
+If your printer stops extruding in mid-print, you probably have either
+a spool tangle or a nozzle clog.
+
+Check for a tangle by joggling the filament spool to see if it
+spins freely and filament can unroll off of it with a straight
+path in the printer.
+
+Verifying that you have a nozzle clog is difficult because you can't
+see inside the nozzle. But the basic procedure for clearing a clog is
+fast and easy; apply it any time you suspect a clog.
+
+== Basic De-Clogging:
+
+Printer manufacturers often ship basic de-clogging tools - a push rod
+and a needle - with your printer. Alas, they are usually too
+lightweight and finicky for the application.
+
+Get your hands on a more robust tool like the https://noclogger.com/[NoClogger].
+Or just a piece of plain rod stock with a 1.5mm diameter - the pointy
+end is nice but not essential.
+
+1. Unload filament in the normal way.
+
+2. Unship the PTFE tube at the toolhead end.
+
+2. Heat the nozzle back up to melt temperature or above -
+   higher is better for this purpose.
+
+3. Push your your poker down the filament channel. Don't be afraid to
+   use force, the throat interior is hard metal and difficult to
+   damage.
+
+4. You're looking for filament to drool out of the nozzle; that's
+   your melted clog.
+
+// end
