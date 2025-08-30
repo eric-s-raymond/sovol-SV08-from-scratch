@@ -1,5 +1,5 @@
 = Actionable Advice
-// batchspell: add RFI
+// batchspell: add RFI Reddit topbot PVA TPU TPE bioplastics makerspace
 
 == Build-time advice
 
@@ -18,13 +18,52 @@ other printer types:
 
 5. Put a snap-on ferrite choke on your toolhead cable against RFI.
 
+== Managing filament
+
+When you dismount a filament spool, don't let the filament end
+flop around - that's a fast way to get filament tangles on your spool
+that will trouble you later. Thread the end through at least one of the
+holes near the spool rim; ideally, two of them.
+
+Moist filament is a major cause of adhesion failures - filament that
+has absorbed water vapor is bad at forming inter-layer bonds. Buy a cheap
+hygrometer to put near your printer; if 40+% humidity is at all common
+where you live, you need to get a filament dryer and cycle your
+filament through it to avoid messy
+disasters. https://www.reddit.com/r/3Dprinting/comments/15plahp/what_filament_dryer_would_you_recommend/[This
+Reddit post] goes into more detail.  Apply this handy table; it
+assumes ambient humidity 50%, 25°C (77°F), 1kg filament spool, scale
+as needed:
+
+[frame="topbot",options="header"]
+|===================================================================
+| Filament   |  Temperature  |   Time (Hours)
+| PLA        |  55°C (131°F) |    > 6
+| ABS        |  65°C (149°F) |    > 6
+| PETG       |  65°C (149°F) |    > 6
+| Nylon      |  75°C (167°F) |    > 24
+| Desiccants |  65°C (149°F) |    > 6
+| PVA        |  45°C (113°F) |    > 24
+| TPU/TPE    |  55°C (131°F) |    > 8
+| ASA        |  65°C (149°F) |    > 8
+| PP         |  55°C (131°F) |    > 6
+| HIPS       |  65°C (149°F) |    > 8
+| PC         |  75°C (167°F) |    > 12
+| PEEK       | 120°C (248°F) |    > 24
+|===================================================================
+
+Disposing of failed prints and scrap in an ecologically safe way is a
+real problem. No common filaments will break down in landfills or
+compost piles; PLA can be recycled, but only industrially (55–60 °C,
+high humidity, microbial action). Some municipal recycling programs
+handle PLA under "bioplastics", but many don't. Check in with local
+plastics recyclers or university/makerspace programs.
+
 == Diagnosing Print Failures
 
-If you get horrible spaghetti, the first thing to check before you
-despair of the printer is the humidity. Filament that has absorbed
-moisture is bad at forming inter-layer bonds. If you live in a
-chronically humid area or it's summer, you probably need a filament
-dryer.
+If you get horrible spaghetti (especially if you get it after a run of
+good prints) the first thing to suspect is moist filament. There's no
+fix for this short of a filament dryer.
 
 If your printer stops extruding in mid-print, you probably have either
 a spool tangle or a nozzle clog.
