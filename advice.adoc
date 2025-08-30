@@ -125,6 +125,12 @@ than any of its competitors. (If your printer requires a
 vendor-proprietary slicer, you bought the wrong printer and you should
 fix that.)
 
+I recommend changing your support type to default to "tree". This used
+to be an unreliable experimental feature, but the algorithm for
+computing support points has been improved enough to makwe it
+reliable. The advantage is that the attachment points of tree support
+are easier to clean off without marring your print's surface.
+
 If you're designing your own parts and your CAD software gives you the
 option, go with 3mf files rather than STLs. Many CAD programs will
 sometimes generate minor STL glitches like z-conflicts and inverted
