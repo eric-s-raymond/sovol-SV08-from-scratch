@@ -1,6 +1,7 @@
 = Actionable Advice
 // batchspell: add RFI Reddit topbot PVA TPU TPE bioplastics
-// batchspell: add makerspace STL STLs fixups
+// batchspell: add makerspace STL STLs fixups microparticles
+// batchspell: add wipedown overdriving
 
 These are things I had to learn the hard way because YouTube videos
 and online tutorials miss them.
@@ -65,9 +66,21 @@ plastics recyclers or university/makerspace programs.
 
 == Diagnosing Print Failures
 
-If you get horrible spaghetti (especially if you get it after a run of
-good prints) the first thing to suspect is moist filament. There's no
-fix for this short of a filament dryer.
+Once you have your z-height dialed in, the most common cause of a bad
+first layer is a dirty build plate; finger oil, dust, and plastic
+microparticles can accumulate and ruin your adhesion. So the the first
+thing to try on adhesion failure is clean the plate. A light wipedown
+with isopropyl alcohol will do it.
+
+If you get a good first layer but spaghetti above it (especially if you
+get this after a run of good prints) the first thing to suspect is moist
+filament. There's no fix for this short of a filament dryer.
+
+Stringing can have several different causes - overdriving the
+printer's extrusion or travel speed, or setting the nozzle
+temperature too low - but can also result from moist filament.
+When you notice stringing increasing, dryer time is the simplest
+thing to try.
 
 If your printer stops extruding in mid-print, you probably have either
 a spool tangle or a nozzle clog.
