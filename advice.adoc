@@ -1,5 +1,6 @@
 = Actionable Advice
-// batchspell: add RFI Reddit topbot PVA TPU TPE bioplastics makerspace
+// batchspell: add RFI Reddit topbot PVA TPU TPE bioplastics
+// batchspell: add makerspace STL STLs fixups
 
 == Build-time advice
 
@@ -9,7 +10,7 @@ other printer types:
 1. Loctite your frame screws against vibration.
 
 2. Tack down your stepper-motor connectors with hot glue against
-   vibration.
+   vibration, if this wasn't done at the factory.
 
 3. Apply armor tape anywhere wire bundles might rub against a metal
    edge.
@@ -99,5 +100,19 @@ end is nice but not essential.
 
 4. You're looking for filament to drool out of the nozzle; that's
    your melted clog.
+
+== Slicers and formats
+
+If you don't have history with a slicer you already know, use
+OrcaSlicer - it's a vigorous open-source project that evolves faster
+than any of its competitors. (If your printer requires a
+vendor-proprietary slicer, you bought the wrong printer and you should
+fix that.)
+
+If you're designing your own parts and your CAD software gives you the
+option, go with 3mf files rather than STLs. Many CAD programs will
+sometimes generate minor STL glitches like z-conflicts and inverted
+normals that can cause issues at slicing time; rather than applying
+fixups, you can avoid that whole class of issues with 3mf.
 
 // end
