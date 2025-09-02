@@ -83,11 +83,17 @@ When you notice stringing increasing, dryer time is the simplest
 thing to try.
 
 If your printer stops extruding in mid-print, you probably have either
-a spool tangle or a nozzle clog.
+a spool tangle or a nozzle clog. The first thing to check, though, is
+that your extruder gears actually turn and move filament when you do a
+filement load or unload.  Many printers (including the SV08) have a
+wheel-handle attached to an extruder gear; you should see it move
+during these operations. If you don't, you have a serious problem that
+is outside the scope of this document - seek help from a user forum or
+vendor technical support.
 
 Check for a tangle by joggling the filament spool to see if it
 spins freely and filament can unroll off of it with a straight
-path in the printer.
+path to the printer.
 
 Verifying that you have a nozzle clog is difficult because you can't
 see inside the nozzle. But the basic procedure for clearing a clog is
