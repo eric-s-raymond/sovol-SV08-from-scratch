@@ -1,5 +1,5 @@
 = Tuning and Customizations
-// batchspell: add cfg MicroSwiss hotend
+// batchspell: add cfg MicroSwiss hotend CHT
 
 If you found this before the link:setup.adoc[Sovol SV08 Build and Setup Guide],
 you should probably read that first.
@@ -124,12 +124,23 @@ calibrating the probe pressure. Slows down start of printing
 slightly but improves first-layer reliability when you're doing
 multiple back-to-back prints.
 
-== Upgrades not yet applied
+== MicroSwiss hotend
 
-I have the MicroSwiss upgrade hotend for the SV08, but haven't
-installed it yet.  This is a useful installation video:
+I've installed the MicroSwiss upgrade hotend for the SV08.  This is a
+useful installation video.
 
 https://www.youtube.com/watch?v=9ZrIIq5CX9c&t=116s
+
+I had been having problems with clogs; this upgrade makes removing
+the nozzle easy so I can inspect and probe the filament channel.
+It also creates the option to move to a high-flow CHT nozzle, though
+I haven't done that yet.
+
+== Upgrades not yet applied
+
+Glacier build plate for printing PETG:
+
+https://www.amazon.com/BIQU-CryoGrip-257x257mm-Bambu-Lab-Removable/dp/B0DQTBGVWL
 
 SV08 riser:
 

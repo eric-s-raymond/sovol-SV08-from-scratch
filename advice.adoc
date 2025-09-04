@@ -85,7 +85,7 @@ thing to try.
 If your printer stops extruding in mid-print, you probably have either
 a spool tangle or a nozzle clog. The first thing to check, though, is
 that your extruder gears actually turn and move filament when you do a
-filement load or unload.  Many printers (including the SV08) have a
+filament load or unload.  Many printers (including the SV08) have a
 wheel-handle attached to an extruder gear; you should see it move
 during these operations. If you don't, you have a serious problem that
 is outside the scope of this document - seek help from a user forum or
@@ -133,7 +133,7 @@ fix that.)
 
 I recommend changing your support type to default to "tree". This used
 to be an unreliable experimental feature, but the algorithm for
-computing support points has been improved enough to makwe it
+computing support points has been improved enough to make it
 reliable. The advantage is that the attachment points of tree support
 are easier to clean off without marring your print's surface.
 
