@@ -113,4 +113,8 @@ two methods to fight each other.
 . Check that the OrcaSlicer start and end macros call the Sovol
   START_PRINT and END_PRINT macros.
 
+== SV08 firmware repository
+
+https://github.com/Sovol3d/SV08
+
 // end
