@@ -366,6 +366,25 @@ cable threading through to the inside.  Neither the enclosure manual
 nor the Sovol installation video is explicit about this, though
 gerGo's video is.
 
+== Manual Fan Testing
+
+If you scroll down in the Dashboard tab, you should find three
+sliders you can manually test your fans with.
+
+Fan 0: The heat-break fan
+
+Fan 1: The part-cooling fan
+
+Fan 3: The enclosure fan
+
+The hot-end fan doesn't have a slider because it's directly controlled
+by the thermistor on the toolhead.
+
+Note: The numbering in the Mainsail web interface does *not*
+correspond to the silk-screened numbers on the toolhead motherboard.
+In particular, the part-cooling fan is 1 in the Mainsail web interface,
+but the connector is labeled "3".
+
 == What To Read Next
 
 link:customizations.adoc[Tuning and Customizations]
